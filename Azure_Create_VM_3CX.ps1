@@ -254,7 +254,7 @@ else
 				}
 	}
 
-# Create NSG, 3CX Rules, Allow SSH from 3Nines IPs:
+# Create NSG, 3CX Rules:
 Write-Host "Creating rules for 3CX required ports..." -ForegroundColor Gray
 $rule1 = New-AzNetworkSecurityRuleConfig -Name HTTPS -Description "HTTPS" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet `
