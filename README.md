@@ -3,7 +3,6 @@
 Easiest way to execute this script is from PowerShell ISE.
 Open in ISE and define parameters:
 
-#___________________________________________________________________________________________________________________________________
 $rgName 	    	= "3cx-rg"		  # Azure Resource Group for housing the VM and related resources (can create new or use existing)
 $vmComputerName 	= "cust-az-pbx"	  # Computername
 $vNetName	      = "3cx-vnet"	  # Virtual Network Name (will create new or use existing if already created)
@@ -12,7 +11,7 @@ $subnetName	  	= "3cx-subnet"      # Subnet name for housing the VM (will create
 $subnetPrefix  	= '10.10.199.0/24'  # Subnet attached to the VM NIC
 $adminUser	  	= "3cxroot"		  # Admin user - may have error using 'root'
 $securePassword 	= ConvertTo-SecureString "ChangeMe!" -AsPlainText -Force	# Admin password
-#_____________________________________________________________________________________________________________________________________/
+
 
 Script will prompt for credentials to Azure portal (Modern Auth), query subscriptions and then ask you for other needed information:
 1. Subscription
