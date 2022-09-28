@@ -23,9 +23,9 @@ $securePassword
 Script will prompt for credentials to Azure portal (Modern Auth), query subscriptions and then ask you for other needed information:
 1. Subscription
 2. Location (data center)
-3. Publisher (marketplace)
-4. Offer (marketplace)
-5. SKU (marketplace)
+3. Publisher (marketplace) Choose 3cx-pbx
+4. Offer (marketplace) Choose 3cx-pbx
+5. SKU (marketplace) Choose 16  (this will install version 18)
 6. VM Size
 
 Test if Premium Disks are supported for VM size and then ask for disk storage type:
