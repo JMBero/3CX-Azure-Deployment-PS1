@@ -4,13 +4,13 @@ Easiest way to execute this script is from PowerShell ISE.
 Open in ISE and define parameters:
 
 #________________________________________________________________________________________________________________________________________________
-$rgName 		    	= "3cx-rg"		      # Azure Resource Group for housing the VM and related resources (will create new or use existing)
-$vmComputerName 	= "cust-az-pbx"		  # Computername
-$vNetName			    = "3cx-vnet"		    # Virtual Network Name (will create new or use existing if already created)
-$vNetPrefix		  	= '10.10.0.0/16'	  # This should be larger than the subnetPrefix in order to contain future subnets
-$subnetName		  	= "3cx-subnet"		  # Subnet name for housing the VM (will create new or use existing if already created)
-$subnetPrefix	  	= '10.10.199.0/24'  # Subnet attached to the VM NIC
-$adminUser		  	= "3cxroot"			    # Admin user - may have error using 'root'
+$rgName 	    	= "3cx-rg"		  # Azure Resource Group for housing the VM and related resources (will create new or use existing)
+$vmComputerName 	= "cust-az-pbx"	  # Computername
+$vNetName	      = "3cx-vnet"	  # Virtual Network Name (will create new or use existing if already created)
+$vNetPrefix	  	= '10.10.0.0/16'	  # This should be larger than the subnetPrefix in order to contain future subnets
+$subnetName	  	= "3cx-subnet"      # Subnet name for housing the VM (will create new or use existing if already created)
+$subnetPrefix  	= '10.10.199.0/24'  # Subnet attached to the VM NIC
+$adminUser	  	= "3cxroot"		  # Admin user - may have error using 'root'
 $securePassword 	= ConvertTo-SecureString "ChangeMe!" -AsPlainText -Force	# Admin password
 #________________________________________________________________________________________________________________________________________________/
 
