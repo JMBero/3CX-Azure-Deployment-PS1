@@ -34,4 +34,3 @@ Create VM config and deploy VM
 
 Give output with 3CX Web Configuration Tool URL if VM deployment completed successfully
  
-
