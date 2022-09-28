@@ -3,6 +3,7 @@
 Easiest way to execute this script is from PowerShell ISE.
 Open in ISE and define parameters:
 
+
 $rgName           Azure Resource Group for housing the VM and related resources (can create new or use existing)
 
 $vmComputerName 	Computername
@@ -18,6 +19,7 @@ $subnetPrefix  	Subnet attached to the VM NIC
 $adminUser	  	Admin user - may have error using 'root'
 
 $securePassword 	
+
 
 
 Script will prompt for credentials to Azure portal (Modern Auth), query subscriptions and then ask you for other needed information:
