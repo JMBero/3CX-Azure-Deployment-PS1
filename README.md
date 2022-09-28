@@ -3,8 +3,8 @@
 Easiest way to execute this script is from PowerShell ISE.
 Open in ISE and define parameters:
 
-#______________________________________________________________________________________________________________________________________
-$rgName 	    	= "3cx-rg"		  # Azure Resource Group for housing the VM and related resources (will create new or use existing)
+#___________________________________________________________________________________________________________________________________
+$rgName 	    	= "3cx-rg"		  # Azure Resource Group for housing the VM and related resources (can create new or use existing)
 $vmComputerName 	= "cust-az-pbx"	  # Computername
 $vNetName	      = "3cx-vnet"	  # Virtual Network Name (will create new or use existing if already created)
 $vNetPrefix	  	= '10.10.0.0/16'	  # This should be larger than the subnetPrefix in order to contain future subnets
