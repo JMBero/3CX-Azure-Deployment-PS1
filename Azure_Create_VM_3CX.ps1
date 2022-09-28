@@ -4,13 +4,13 @@
 #
 # Define Parameters:
 #___________________________________________________________________________________________________________________________________________________________________
-$rgName 			= "3cx-rg"		    # Azure Resource Group for housing the VM and related resources (will create new or use existing)
+$rgName 		= "3cx-rg"		# Azure Resource Group for housing the VM and related resources (will create new or use existing)
 $vmComputerName 	= "cust-az-pbx"		# Computername
-$vNetName			= "3cx-vnet"		# Virtual Network Name (will create new or use existing if already created)
-$vNetPrefix			= '10.10.0.0/16'	# This should be larger than the subnetPrefix in order to contain future subnets
-$subnetName			= "3cx-subnet"		# Subnet name for housing the VM (will create new or use existing if already created)
-$subnetPrefix		= '10.10.199.0/24'  # Subnet attached to the VM NIC
-$adminUser			= "3cxroot"			# Admin user - may have error using 'root'
+$vNetName		= "3cx-vnet"		# Virtual Network Name (will create new or use existing if already created)
+$vNetPrefix		= '10.10.0.0/16'	# This should be larger than the subnetPrefix in order to contain future subnets
+$subnetName		= "3cx-subnet"		# Subnet name for housing the VM (will create new or use existing if already created)
+$subnetPrefix		= '10.10.199.0/24'  	# Subnet attached to the VM NIC
+$adminUser		= "3cxroot"		# Admin user - may have error using 'root'
 $securePassword 	= ConvertTo-SecureString "ChangeMe!" -AsPlainText -Force	# Admin password
 #___________________________________________________________________________________________________________________________________________________________________|
 
@@ -260,33 +260,29 @@ $rule1 = New-AzNetworkSecurityRuleConfig -Name HTTPS -Description "HTTPS" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 100 -SourceAddressPrefix Internet `
 	-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 443
 
-$rule2 = New-AzNetworkSecurityRuleConfig -Name SSH -Description "SSH" `
-    -Access Allow -Protocol Tcp -Direction Inbound -Priority 101 -SourceAddressPrefix "174.76.3.160/27","64.19.98.0/28" `
-	-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 22
-
-$rule3 = New-AzNetworkSecurityRuleConfig -Name 3CX-Tunnel -Description "3CX Tunnel" `
+$rule2 = New-AzNetworkSecurityRuleConfig -Name 3CX-Tunnel -Description "3CX Tunnel" `
     -Access Allow -Protocol * -Direction Inbound -Priority 102 -SourceAddressPrefix Internet `
 	-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5090
 
-$rule4 = New-AzNetworkSecurityRuleConfig -Name SIP -Description "SIP" `
+$rule3 = New-AzNetworkSecurityRuleConfig -Name SIP -Description "SIP" `
     -Access Allow -Protocol * -Direction Inbound -Priority 103 -SourceAddressPrefix Internet `
 	-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5060
 	
-$rule5 = New-AzNetworkSecurityRuleConfig -Name 3CX-RTP -Description "3CX RTP" `
+$rule4 = New-AzNetworkSecurityRuleConfig -Name 3CX-RTP -Description "3CX RTP" `
     -Access Allow -Protocol UDP -Direction Inbound -Priority 104 -SourceAddressPrefix Internet `
 	-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 9000-10999
 
-$rule6 = New-AzNetworkSecurityRuleConfig -Name 3CX-Wizard -Description "3CX Wizard" `
+$rule5 = New-AzNetworkSecurityRuleConfig -Name 3CX-Wizard -Description "3CX Wizard" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 105 -SourceAddressPrefix Internet `
 	-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 5015
 	
-$rule7 = New-AzNetworkSecurityRuleConfig -Name HTTP -Description "HTTP" `
+$rule6 = New-AzNetworkSecurityRuleConfig -Name HTTP -Description "HTTP" `
     -Access Allow -Protocol Tcp -Direction Inbound -Priority 106 -SourceAddressPrefix Internet `
 	-SourcePortRange * -DestinationAddressPrefix * -DestinationPortRange 80
 
 Write-Host "Creating Network Security Group '$nsgName'..." -ForegroundColor Gray
 $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgName -Location $locName -Name $nsgName `
-	-SecurityRules $rule1,$rule2,$rule3,$rule4,$rule5,$rule6,$rule7
+	-SecurityRules $rule1,$rule2,$rule3,$rule4,$rule5,$rule6
 
 Write-Host "Creating Public IP '$publicIpName'..." -ForegroundColor Gray
 $vnetq2=Get-AzVirtualNetwork -Name $vNetName -ResourceGroupName $rgName
